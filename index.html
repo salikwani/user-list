@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adding Employees</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <h3>New User</h3>
+    <div class="input-tab">
+        <div class="info">
+            <p>Enter Name</p>
+            <input id="name" type="text">
+        </div>
+        <div class="info">
+            <p>Enter Profession</p>
+            <input id="profession" type="text">
+        </div>
+        <div class="info">
+            <p>Enter Age</p>
+            <input id="age" type="number">
+        </div>
+    </div>
+    <button id="add-btn" type="submit">Add User</button>
+    <p id="success">Success : Employee Added!</p>
+    <p id="error">Error : Please Make sure All the fields are filled before adding in an employee!</p>
+    <div class="employees">
+        <p id="added-employees">Added Employees</p>
+        <p id="zero-e">You have 0 Employees.</p>
+        <div id="data">
+        </div>
+    </div>
+    <script src="./index.js"></script>
+</body>
+</html>
