@@ -1,21 +1,22 @@
 var arr = [];
-var i = 1;
+var j = 1;
 
 document.getElementById("add-btn").addEventListener('click',addEmployee);
 
 function addEmployee() {
-    var name = document.getElementById("name").value;
-    var profession = document.getElementById("profession").value;
-    var age = document.getElementById("age").value;
+    var name = document.getElementById("name");
+    var profession = document.getElementById("profession");
+    var age = document.getElementById("age");
 
-    if(name && profession && age) {
-        var obj = {id: i, name: name, profession: profession, age: age};
+    if(name.value && profession.value && age.value) {
+        var obj = {id: j, name: name.value, profession: profession.value, age: age.value};
         arr.push(obj);
         console.log(arr);
-        i++;
+        j++;
         displayData();
         addDetails(arr);
         success();
+        name.value = ""; profession.value = ""; age.value = "";
     } else {
         error();
     }
@@ -37,10 +38,11 @@ function success() {
     document.getElementById("success").style.display = "block";
 }
 
-function addDetails(arr) {
+function addDetails() {
     var eData = document.getElementById("data");
+    var add = "";
     for(var i=0;i<arr.length;i++) {
-        eData.innerHTML += `<div class="e-data" id="u-${arr[i].id}">
+        add += `<div class="e-data" id="u-${arr[i].id}">
                                 <div class="details">
                                     <p>${arr[i].id}.</p>
                                     <p>Name: ${arr[i].name}</p>
@@ -50,10 +52,21 @@ function addDetails(arr) {
                                 <button class="delete-btn" onclick="delUser('u-${arr[i].id}')">Delete User</button>
                             </div>`
     }
-    arr.splice(0);
+    eData.innerHTML = add;
 }
 
 function delUser(id) {
-    document.getElementById(id).remove();
+    for(var i in arr) {
+        if(id === `u-${arr[i].id}`) {
+            arr.splice(i,1);
+            break;
+        }
+    }
+    j = 1;
+    for(var user of arr) {
+        user.id = j;
+        j++;
+    }
+    addDetails();
 }
 
